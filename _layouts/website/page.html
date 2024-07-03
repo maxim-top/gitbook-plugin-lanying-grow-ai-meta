@@ -9,7 +9,7 @@
             {% if key == 'content' and datum.name == 'keywords' %}
                 {% if value %}
                 {% set keyword_list = value.split(',') %}
-                {% set index = page.keywords|length + title|length %}
+                {% set index = page.keywords|length + page.title|length + page.content|length %}
                 {% set keyword_list_length = keyword_list|length %}
                 {% set choosed_keywords = page.keywords|default('') %}
                 {% if keyword_list_length > 3 %}
