@@ -1,18 +1,18 @@
 {
-    "name": "gitbook-plugin-meta",
+    "name": "gitbook-plugin-lanying-grow-ai-meta",
     "description": "Add meta data to <head> for your gitbook",
-    "version": "0.1.12",
+    "version": "0.1.13",
     "engines": {
         "gitbook": "*"
     },
-    "homepage": "https://github.com/CyberZHG/gitbook-plugin-meta",
+    "homepage": "https://github.com/maxim-top/gitbook-plugin-lanying-grow-ai-meta",
     "repository": {
         "type": "git",
-        "url": "https://github.com/CyberZHG/gitbook-plugin-meta.git"
+        "url": "https://github.com/maxim-top/gitbook-plugin-lanying-grow-ai-meta.git"
     },
     "license": "GPL-3.0",
     "bugs": {
-        "url": "https://github.com/CyberZHG/gitbook-plugin-meta/issues"
+        "url": "https://github.com/maxim-top/gitbook-plugin-lanying-grow-ai-meta/issues"
     },
     "gitbook": {
         "properties": {
