@@ -23,28 +23,52 @@
                     {% endfor %}
                     {% endfor %}
 
-                    {% set now_keyword = keyword_list[index % keyword_list_length] %}
+                    {% set now_keyword = keyword_list[index % keyword_list_length]|trim %}
                     {% set index = index+1 %}
                     {% if choosed_keywords == '' %}
                     {% set choosed_keywords = now_keyword %}
                     {% else %}
+                    {% set found = 0 %}
+                    {% for word in choosed_keywords.split(',') %}
+                    {% if word|trim == now_keyword %}
+                    {% set found = 1 %}
+                    {% endif %}
+                    {% endfor %}
+                    {% if found == 0 %}
                     {% set choosed_keywords = choosed_keywords + ', ' + now_keyword %}
                     {% endif %}
-
-                    {% set now_keyword = keyword_list[index % keyword_list_length] %}
-                    {% set index = index+1 %}
-                    {% if choosed_keywords == '' %}
-                    {% set choosed_keywords = now_keyword %}
-                    {% else %}
-                    {% set choosed_keywords = choosed_keywords + ', ' + now_keyword %}
                     {% endif %}
 
-                    {% set now_keyword = keyword_list[index % keyword_list_length] %}
+                    {% set now_keyword = keyword_list[index % keyword_list_length]|trim %}
                     {% set index = index+1 %}
                     {% if choosed_keywords == '' %}
                     {% set choosed_keywords = now_keyword %}
                     {% else %}
+                    {% set found = 0 %}
+                    {% for word in choosed_keywords.split(',') %}
+                    {% if word|trim == now_keyword %}
+                    {% set found = 1 %}
+                    {% endif %}
+                    {% endfor %}
+                    {% if found == 0 %}
                     {% set choosed_keywords = choosed_keywords + ', ' + now_keyword %}
+                    {% endif %}
+                    {% endif %}
+
+                    {% set now_keyword = keyword_list[index % keyword_list_length]|trim %}
+                    {% set index = index+1 %}
+                    {% if choosed_keywords == '' %}
+                    {% set choosed_keywords = now_keyword %}
+                    {% else %}
+                    {% set found = 0 %}
+                    {% for word in choosed_keywords.split(',') %}
+                    {% if word|trim == now_keyword %}
+                    {% set found = 1 %}
+                    {% endif %}
+                    {% endfor %}
+                    {% if found == 0 %}
+                    {% set choosed_keywords = choosed_keywords + ', ' + now_keyword %}
+                    {% endif %}
                     {% endif %}
 
                 {% elif keyword_list_length > 0 %}
