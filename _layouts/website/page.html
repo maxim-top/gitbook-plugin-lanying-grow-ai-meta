@@ -7,81 +7,11 @@
     {% for datum in config.pluginsConfig.meta.data %}
         <meta {% for key, value in datum %}
             {% if key == 'content' and datum.name == 'keywords' %}
-                {% if value %}
-                {% set keyword_list = value.split(',') %}
-                {% set index = page.keywords|length + page.title|length + page.content|length %}
-                {% set keyword_list_length = keyword_list|length %}
-                {% set choosed_keywords = page.keywords|default('') %}
-                {% if keyword_list_length > 3 %}
-                    {% for char1 in page.keywords|default('')%}
-                    {% for char2 in title|default('') %}
-                    {% if char1 > char2 %}
-                    {% set index = index + 13 %}
-                    {% else %}
-                    {% set index = index + 17 %}
-                    {% endif %}
-                    {% endfor %}
-                    {% endfor %}
-
-                    {% set now_keyword = keyword_list[index % keyword_list_length]|trim %}
-                    {% set index = index+1 %}
-                    {% if choosed_keywords == '' %}
-                    {% set choosed_keywords = now_keyword %}
-                    {% else %}
-                    {% set found = 0 %}
-                    {% for word in choosed_keywords.split(',') %}
-                    {% if word|trim == now_keyword %}
-                    {% set found = 1 %}
-                    {% endif %}
-                    {% endfor %}
-                    {% if found == 0 %}
-                    {% set choosed_keywords = choosed_keywords + ', ' + now_keyword %}
-                    {% endif %}
-                    {% endif %}
-
-                    {% set now_keyword = keyword_list[index % keyword_list_length]|trim %}
-                    {% set index = index+1 %}
-                    {% if choosed_keywords == '' %}
-                    {% set choosed_keywords = now_keyword %}
-                    {% else %}
-                    {% set found = 0 %}
-                    {% for word in choosed_keywords.split(',') %}
-                    {% if word|trim == now_keyword %}
-                    {% set found = 1 %}
-                    {% endif %}
-                    {% endfor %}
-                    {% if found == 0 %}
-                    {% set choosed_keywords = choosed_keywords + ', ' + now_keyword %}
-                    {% endif %}
-                    {% endif %}
-
-                    {% set now_keyword = keyword_list[index % keyword_list_length]|trim %}
-                    {% set index = index+1 %}
-                    {% if choosed_keywords == '' %}
-                    {% set choosed_keywords = now_keyword %}
-                    {% else %}
-                    {% set found = 0 %}
-                    {% for word in choosed_keywords.split(',') %}
-                    {% if word|trim == now_keyword %}
-                    {% set found = 1 %}
-                    {% endif %}
-                    {% endfor %}
-                    {% if found == 0 %}
-                    {% set choosed_keywords = choosed_keywords + ', ' + now_keyword %}
-                    {% endif %}
-                    {% endif %}
-
-                {% elif keyword_list_length > 0 %}
-                    {% if choosed_keywords == '' %}
-                    {% set choosed_keywords = value %}
-                    {% else %}
-                    {% set choosed_keywords = choosed_keywords + ', ' + value %}
-                    {% endif %}
-                {% endif %}
+                {% if page.keywords %}
+                    {{ key }}="{{ page.keywords }}"
                 {% else %}
-                {% set choosed_keywords = page.keywords|default('') %}
+                    {{ key }}="{{value}}"
                 {% endif %}
-                {{ key }}="{{ choosed_keywords }}"
             {% else %}
                 {{ key }}="{{value}}"
             {% endif %}

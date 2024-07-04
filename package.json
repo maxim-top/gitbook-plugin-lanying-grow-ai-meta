@@ -1,7 +1,7 @@
 {
     "name": "gitbook-plugin-lanying-grow-ai-meta",
     "description": "Add meta data to <head> for your gitbook",
-    "version": "0.1.15",
+    "version": "0.1.16",
     "engines": {
         "gitbook": "*"
     },
